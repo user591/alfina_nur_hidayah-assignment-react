@@ -33,7 +33,8 @@ const EditPhoto = () => {
         "updatedAt": new Date()
       })
     })
-    .then (() => navigate('/photos'));
+    .then (() => navigate('/photos'))
+    .catch((error)=> setError(error))
   };
 
   useEffect(() => {

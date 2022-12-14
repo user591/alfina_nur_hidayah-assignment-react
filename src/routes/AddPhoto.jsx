@@ -32,7 +32,7 @@ const AddPhoto = () => {
       }
       return response.json()
     })
-    .then(json => setError(json.error))
+    .then(()=> setError("You are not authorized"))
   };
 
   return (

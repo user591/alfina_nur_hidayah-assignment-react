@@ -40,6 +40,7 @@ const Photos = () => {
         setPhotos(json);
         setLoading(false);
       })
+      .catch((error)=> setError(error))
     }
     else if ( sort === 'desc') {
       fetch(`${url}?_sort=id&_order=desc&q=${submited}`)
