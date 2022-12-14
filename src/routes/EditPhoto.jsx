@@ -10,15 +10,6 @@ const EditPhoto = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  function getData() {
-    fetch(`https://gallery-app-server.vercel.app/photos/${id}`)
-    .then((res) => res.json())
-    .then((data) => {
-      setImageUrl(data.imageUrl);
-      setCaptions(data.captions);
-    })
-  }
-
   const editPhoto = (e) => {
     e.preventDefault();
     // TODO: answer here
@@ -40,7 +31,12 @@ const EditPhoto = () => {
   useEffect(() => {
     setLoading(true);
     // TODO: answer here
-    getData();
+    fetch(`https://gallery-app-server.vercel.app/photos/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      setImageUrl(data.imageUrl);
+      setCaptions(data.captions);
+    })
     setLoading(false);
   }, [id]);
 
