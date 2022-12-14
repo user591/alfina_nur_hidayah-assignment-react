@@ -25,12 +25,14 @@ const Photos = () => {
       method: 'DELETE'
     })
       .then(() => {
-        const data = [...photos].filter((photo) => photo.id != id);
+        const data = [...photos].filter((photo) => photo.id !== id);
         setPhotos(data);
       });
   };
 
-  function fetchData() {
+  useEffect(() => {
+    setLoading(true);
+    // TODO: answer here
     const url = 'https://gallery-app-server.vercel.app/photos';
 
     if(sort === 'asc') {
@@ -50,12 +52,6 @@ const Photos = () => {
         setLoading(false);
       })
     }
-  };
-
-  useEffect(() => {
-    setLoading(true);
-    // TODO: answer here
-    fetchData();
   }, [sort, submited]);
 
   useEffect(() => {
